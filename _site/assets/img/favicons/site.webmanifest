@@ -1,9 +1,9 @@
 
 
 {
-  "name": "Chirpy",
-  "short_name": "Chirpy",
-  "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
+  "name": "ToriArtis's Blog",
+  "short_name": "ToriArtis's Blog",
+  "description": "2024 KDT 교육생들",
   "icons": [
     {
       "src": "/assets/img/favicons/android-chrome-192x192.png",
