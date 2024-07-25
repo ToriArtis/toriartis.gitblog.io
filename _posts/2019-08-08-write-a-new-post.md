@@ -258,18 +258,23 @@ image:
 
 ### 비디오
 
-#### 소셜 미디어 플랫폼
 
-다음 구문을 사용해 소셜 미디어 플랫폼의 비디오를 삽입할 수 있어요:
+소셜 미디어 플랫폼의 비디오를 삽입하려면 다음 구문을 사용하세요:
 
 ```liquid
+{% raw %}
 {% include embed/{Platform}.html id='{ID}' %}
+{% endraw %}
 ```
 
 여기서 `Platform`은 플랫폼 이름의 소문자이고 `ID`는 비디오 ID예요.
 
 다음 표는 주어진 비디오 URL에서 필요한 두 매개변수를 얻는 방법을 보여주며, 현재 지원되는 비디오 플랫폼도 알 수 있어요.
 
-| 비디오 URL                                                                                         | Platform   | ID             |
+| 비디오 URL                                                                                          | Platform   | ID             |
 | -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=
+| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
+| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
+| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
+
+이렇게 하면 Liquid 문법 오류를 피하고 원래 의도한 내용을 정확하게 전달할 수 있어요.
