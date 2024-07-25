@@ -1,93 +1,93 @@
 ---
 title: Writing a New Post
-author: cotes
+author: chyhyeonyeong
 date: 2019-08-08 14:10:00 +0800
 categories: [Blogging, Tutorial]
 tags: [writing]
-render_with_liquid: false
+render_with_liquid: true
 ---
 
-This tutorial will guide you how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
+이 튜토리얼은 _Chirpy_ 템플릿에서 게시물을 작성하는 방법을 안내합니다. Jekyll을 이전에 사용해봤더라도 읽어볼 가치가 있습니다. 많은 기능들이 특정 변수 설정을 필요로 하기 때문이에요.
 
-## Naming and Path
+## 이름 짓기와 경로
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION`{: .filepath} and put it in the `_posts`{: .filepath} of the root directory. Please note that the `EXTENSION`{: .filepath} must be one of `md`{: .filepath} and `markdown`{: .filepath}. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
+`YYYY-MM-DD-제목.확장자`{: .filepath} 형식으로 새 파일을 만들고 루트 디렉토리의 `_posts`{: .filepath} 폴더에 넣으세요. `확장자`{: .filepath}는 반드시 `md`{: .filepath}나 `markdown`{: .filepath} 중 하나여야 해요. 파일 만드는 시간을 절약하고 싶다면 [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) 플러그인 사용을 고려해보세요.
 
-## Front Matter
+## 머리말
 
-Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-matter/) as below at the top of the post:
+기본적으로 게시물 맨 위에 다음과 같은 [머리말](https://jekyllrb.com/docs/front-matter/)을 채워넣어야 해요:
 
 ```yaml
 ---
-title: TITLE
+title: 제목
 date: YYYY-MM-DD HH:MM:SS +/-TTTT
-categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [TAG]     # TAG names should always be lowercase
+categories: [대분류, 소분류]
+tags: [태그]     # 태그 이름은 항상 소문자여야 해요
 ---
 ```
 
-> The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
+> 게시물의 _레이아웃_은 기본적으로 `post`로 설정되어 있어서 머리말 블록에 _layout_ 변수를 추가할 필요가 없어요.
 {: .prompt-tip }
 
-### Timezone of Date
+### 날짜의 시간대
 
-To accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
+게시물의 발행 날짜를 정확히 기록하려면 `_config.yml`{: .filepath}의 `timezone`을 설정할 뿐만 아니라 머리말 블록의 `date` 변수에 게시물의 시간대도 제공해야 해요. 형식: `+/-TTTT`, 예를 들면 `+0800`.
 
-### Categories and Tags
+### 카테고리와 태그
 
-The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
+각 게시물의 `categories`는 최대 두 개의 요소를 포함하도록 설계되었고, `tags`의 요소 수는 0부터 무한대까지 가능해요. 예를 들면:
 
 ```yaml
 ---
-categories: [Animal, Insect]
-tags: [bee]
+categories: [동물, 곤충]
+tags: [벌]
 ---
 ```
 
-### Author Information
+### 작성자 정보
 
-The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
+게시물의 작성자 정보는 보통 _머리말_에 채울 필요가 없어요. 기본적으로 설정 파일의 `social.name`과 `social.links`의 첫 번째 항목에서 가져오게 될 거예요. 하지만 다음과 같이 직접 설정할 수도 있어요:
 
-Adding author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one).
+`_data/authors.yml`에 작성자 정보 추가하기 (이 파일이 없다면 만들어주세요).
 
 ```yaml
-<author_id>:
-  name: <full name>
-  twitter: <twitter_of_author>
-  url: <homepage_of_author>
+<작성자_id>:
+  name: <전체 이름>
+  twitter: <작성자의_트위터>
+  url: <작성자의_홈페이지>
 ```
 {: file="_data/authors.yml" }
 
-And then use `author` to specify a single entry or `authors` to specify multiple entries:
+그리고 `author`를 사용해 단일 항목을 지정하거나 `authors`를 사용해 여러 항목을 지정할 수 있어요:
 
 ```yaml
 ---
-author: <author_id>                     # for single entry
-# or
-authors: [<author1_id>, <author2_id>]   # for multiple entries
+author: <작성자_id>                     # 단일 항목
+# 또는
+authors: [<작성자1_id>, <작성자2_id>]   # 여러 항목
 ---
 ```
 
-Having said that, the key `author` can also identify multiple entries.
+`author` 키도 여러 항목을 식별할 수 있어요.
 
-> The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
+> `_data/authors.yml`{: .filepath } 파일에서 작성자 정보를 읽는 것의 장점은 페이지에 `twitter:creator` 메타 태그가 생긴다는 거예요. 이는 [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution)를 풍부하게 만들고 SEO에 좋아요.
 {: .prompt-info }
 
-### Post Description
+### 게시물 설명
 
-By default, the first words of the post are used to display on the home page for a list of posts, in the _Further Reading_ section, and in the XML of the RSS feed. If you don't want to display the auto-generated description for the post, you can customize it using the `description` field in the _Front Matter_ as follows:
+기본적으로 게시물의 첫 문장들이 홈페이지의 게시물 목록, _추가 읽기_ 섹션, RSS 피드의 XML에 표시돼요. 게시물에 대해 자동 생성된 설명을 표시하고 싶지 않다면 _머리말_의 `description` 필드를 사용해 다음과 같이 사용자 정의할 수 있어요:
 
 ```yaml
 ---
-description: Short summary of the post.
+description: 게시물의 짧은 요약.
 ---
 ```
 
-Additionally, the `description` text will also be displayed under the post title on the post's page.
+또한 `description` 텍스트는 게시물 페이지의 게시물 제목 아래에도 표시될 거예요.
 
-## Table of Contents
+## 목차
 
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
+기본적으로 **목**차(TOC)는 게시물의 오른쪽 패널에 표시돼요. 전역적으로 끄고 싶다면 `_config.yml`{: .filepath}로 가서 `toc` 변수의 값을 `false`로 설정하세요. 특정 게시물에 대해 TOC를 끄고 싶다면 게시물의 [머리말](https://jekyllrb.com/docs/front-matter/)에 다음을 추가하세요:
 
 ```yaml
 ---
@@ -95,11 +95,11 @@ toc: false
 ---
 ```
 
-## Comments
+## 댓글
 
-The global switch of comments is defined by variable `comments.active` in the file `_config.yml`{: .filepath}. After selecting a comment system for this variable, comments will be turned on for all posts.
+댓글의 전역 스위치는 `_config.yml`{: .filepath} 파일의 `comments.active` 변수로 정의돼요. 이 변수에 대한 댓글 시스템을 선택하면 모든 게시물에 대해 댓글이 켜질 거예요.
 
-If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
+특정 게시물에 대해 댓글을 닫고 싶다면 게시물의 **머리말**에 다음을 추가하세요:
 
 ```yaml
 ---
@@ -107,399 +107,169 @@ comments: false
 ---
 ```
 
-## Media
+## 미디어
 
-We refer to images, audio and video as media resources in _Chirpy_.
+_Chirpy_에서는 이미지, 오디오, 비디오를 미디어 리소스라고 해요.
 
-### URL Prefix
+### URL 접두사
 
-From time to time we have to define duplicate URL prefixes for multiple resources in a post, which is a boring task that you can avoid by setting two parameters.
+때때로 게시물에서 여러 리소스에 대해 중복된 URL 접두사를 정의해야 할 때가 있어요. 이는 지루한 작업이지만 두 개의 매개변수를 설정하면 피할 수 있어요.
 
-- If you are using a CDN to host media files, you can specify the `cdn` in `_config.yml`{: .filepath }. The URLs of media resources for site avatar and posts are then prefixed with the CDN domain name.
+- CDN을 사용해 미디어 파일을 호스팅하고 있다면 `_config.yml`{: .filepath }에서 `cdn`을 지정할 수 있어요. 그러면 사이트 아바타와 게시물의 미디어 리소스 URL에 CDN 도메인 이름이 접두사로 붙게 돼요.
 
   ```yaml
   cdn: https://cdn.com
   ```
   {: file='_config.yml' .nolineno }
 
-- To specify the resource path prefix for the current post/page range, set `media_subpath` in the _front matter_ of the post:
+- 현재 게시물/페이지 범위에 대한 리소스 경로 접두사를 지정하려면 게시물의 _머리말_에서 `media_subpath`를 설정하세요:
 
   ```yaml
   ---
-  media_subpath: /path/to/media/
+  media_subpath: /경로/미디어/
   ---
   ```
   {: .nolineno }
 
-The option `site.cdn` and `page.media_subpath` can be used individually or in combination to flexibly compose the final resource URL: `[site.cdn/][page.media_subpath/]file.ext`
+`site.cdn`과 `page.media_subpath` 옵션은 개별적으로 또는 조합해서 사용해 최종 리소스 URL을 유연하게 구성할 수 있어요: `[site.cdn/][page.media_subpath/]파일.확장자`
 
-### Images
+### 이미지
 
-#### Caption
+#### 캡션
 
-Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
+이미지 다음 줄에 이탤릭체를 추가하면 캡션이 되어 이미지 아래에 나타나요:
 
 ```markdown
-![img-description](/path/to/image)
-_Image Caption_
+![이미지-설명](/경로/이미지)
+_이미지 캡션_
 ```
 {: .nolineno}
 
-#### Size
+#### 크기
 
-To prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
+이미지가 로드될 때 페이지 내용 레이아웃이 변하는 것을 방지하려면 각 이미지의 너비와 높이를 설정해야 해요.
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
+![데스크톱 보기](/assets/img/sample/mockup.png){: width="700" height="400" }
 ```
 {: .nolineno}
 
-> For an SVG, you have to at least specify its _width_, otherwise it won't be rendered.
+> SVG의 경우 최소한 _너비_를 지정해야 해요. 그렇지 않으면 렌더링되지 않아요.
 {: .prompt-info }
 
-Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
+_Chirpy v5.0.0_부터 `height`와 `width`는 약어를 지원해요(`height` → `h`, `width` → `w`). 다음 예시는 위와 같은 효과를 가져요:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
+![데스크톱 보기](/assets/img/sample/mockup.png){: w="700" h="400" }
 ```
 {: .nolineno}
 
-#### Position
+#### 위치
 
-By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
+기본적으로 이미지는 중앙에 배치되지만 `normal`, `left`, `right` 클래스 중 하나를 사용해 위치를 지정할 수 있어요.
 
-> Once the position is specified, the image caption should not be added.
+> 위치가 지정되면 이미지 캡션을 추가하면 안 돼요.
 {: .prompt-warning }
 
-- **Normal position**
+- **일반 위치**
 
-  Image will be left aligned in below sample:
+  아래 예시에서 이미지는 왼쪽 정렬될 거예요:
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
+  ![데스크톱 보기](/assets/img/sample/mockup.png){: .normal }
   ```
   {: .nolineno}
 
-- **Float to the left**
+- **왼쪽으로 띄우기**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left }
+  ![데스크톱 보기](/assets/img/sample/mockup.png){: .left }
   ```
   {: .nolineno}
 
-- **Float to the right**
+- **오른쪽으로 띄우기**
 
   ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right }
+  ![데스크톱 보기](/assets/img/sample/mockup.png){: .right }
   ```
   {: .nolineno}
 
-#### Dark/Light mode
+#### 다크/라이트 모드
 
-You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (`dark` or `light`):
+다크/라이트 모드에서 테마 선호도에 따라 이미지를 표시할 수 있어요. 이를 위해서는 다크 모드용 이미지와 라이트 모드용 이미지 두 개를 준비하고 특정 클래스(`dark` 또는 `light`)를 지정해야 해요:
 
 ```markdown
-![Light mode only](/path/to/light-mode.png){: .light }
-![Dark mode only](/path/to/dark-mode.png){: .dark }
+![라이트 모드 전용](/경로/라이트-모드.png){: .light }
+![다크 모드 전용](/경로/다크-모드.png){: .dark }
 ```
 
-#### Shadow
+#### 그림자
 
-The screenshots of the program window can be considered to show the shadow effect:
+프로그램 창의 스크린샷에 그림자 효과를 줄 수 있어요:
 
 ```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow }
+![데스크톱 보기](/assets/img/sample/mockup.png){: .shadow }
 ```
 {: .nolineno}
 
-#### Preview Image
+#### 미리보기 이미지
 
-If you want to add an image at the top of the post, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
+게시물 상단에 이미지를 추가하고 싶다면 해상도가 `1200 x 630`인 이미지를 제공해주세요. 이미지 종횡비가 `1.91 : 1`이 아니면 이미지가 크기 조정되고 잘릴 수 있어요.
 
-Knowing these prerequisites, you can start setting the image's attribute:
+이러한 전제 조건을 알았다면 이미지 속성 설정을 시작할 수 있어요:
 
 ```yaml
 ---
 image:
-  path: /path/to/image
-  alt: image alternative text
+  path: /경로/이미지
+  alt: 이미지 대체 텍스트
 ---
 ```
 
-Note that the [`media_subpath`](#url-prefix) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
+[`media_subpath`](#url-접두사)도 미리보기 이미지에 전달할 수 있어요. 즉, 이미 설정되어 있다면 `path` 속성에는 이미지 파일 이름만 필요해요.
 
-For simple use, you can also just use `image` to define the path.
+간단히 사용하려면 `image`만 사용해 경로를 정의할 수도 있어요.
 
 ```yml
 ---
-image: /path/to/image
+image: /경로/이미지
 ---
 ```
 
 #### LQIP
 
-For preview images:
+미리보기 이미지의 경우:
 
 ```yaml
 ---
 image:
-  lqip: /path/to/lqip-file # or base64 URI
+  lqip: /경로/lqip-파일 # 또는 base64 URI
 ---
 ```
 
-> You can observe LQIP in the preview image of post \"[Text and Typography](../text-and-typography/)\".
+> LQIP는 \"[Text and Typography](../text-and-typography/)\" 게시물의 미리보기 이미지에서 관찰할 수 있어요.
 
-For normal images:
+일반 이미지의 경우:
 
 ```markdown
-![Image description](/path/to/image){: lqip="/path/to/lqip-file" }
+![이미지 설명](/경로/이미지){: lqip="/경로/lqip-파일" }
 ```
 {: .nolineno }
 
-### Video
+### 비디오
 
-#### Social Media Platform
+#### 소셜 미디어 플랫폼
 
-You can embed videos from social media platforms with the following syntax:
+다음 구문을 사용해 소셜 미디어 플랫폼의 비디오를 삽입할 수 있어요:
 
 ```liquid
 {% include embed/{Platform}.html id='{ID}' %}
 ```
 
-Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
+여기서 `Platform`은 플랫폼 이름의 소문자이고 `ID`는 비디오 ID예요.
 
-The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
+다음 표는 주어진 비디오 URL에서 필요한 두 매개변수를 얻는 방법을 보여주며, 현재 지원되는 비디오 플랫폼도 알 수 있어요.
 
-| Video URL                                                                                          | Platform   | ID             |
+| 비디오 URL                                                                                         | Platform   | ID             |
 | -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
-| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
-| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
-
-#### Video Files
-
-If you want to embed a video file directly, use the following syntax:
-
-```liquid
-{% include embed/video.html src='{URL}' %}
-```
-
-Where `URL` is a URL to a video file e.g. `/path/to/sample/video.mp4`.
-
-You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
-
-- `poster='/path/to/poster.png'` — poster image for a video that is shown while video is downloading
-- `title='Text'` — title for a video that appears below the video and looks same as for images
-- `autoplay=true` — video automatically begins to play back as soon as it can
-- `loop=true` — automatically seek back to the start upon reaching the end of the video
-- `muted=true` — audio will be initially silenced
-- `types` — specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
-
-Consider an example using all of the above:
-
-```liquid
-{%
-  include embed/video.html
-  src='/path/to/video.mp4'
-  types='ogg|mov'
-  poster='poster.png'
-  title='Demo video'
-  autoplay=true
-  loop=true
-  muted=true
-%}
-```
-
-### Audios
-
-If you want to embed an audio file directly, use the following syntax:
-
-```liquid
-{% include embed/audio.html src='{URL}' %}
-```
-
-Where `URL` is a URL to an audio file e.g. `/path/to/audio.mp3`.
-
-You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
-
-- `title='Text'` — title for an audio that appears below the audio and looks same as for images
-- `types` — specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
-
-Consider an example using all of the above:
-
-```liquid
-{%
-  include embed/audio.html
-  src='/path/to/audio.mp3'
-  types='ogg|wav|aac'
-  title='Demo audio'
-%}
-```
-
-## Pinned Posts
-
-You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
-
-```yaml
----
-pin: true
----
-```
-
-## Prompts
-
-There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They can be generated by adding the class `prompt-{type}` to the blockquote. For example, define a prompt of type `info` as follows:
-
-```md
-> Example line for prompt.
-{: .prompt-info }
-```
-{: .nolineno }
-
-## Syntax
-
-### Inline Code
-
-```md
-`inline code part`
-```
-{: .nolineno }
-
-### Filepath Highlight
-
-```md
-`/path/to/a/file.extend`{: .filepath}
-```
-{: .nolineno }
-
-### Code Block
-
-Markdown symbols ```` ``` ```` can easily create a code block as follows:
-
-````md
-```
-This is a plaintext code snippet.
-```
-````
-
-#### Specifying Language
-
-Using ```` ```{language} ```` you will get a code block with syntax highlight:
-
-````markdown
-```yaml
-key: value
-```
-````
-
-> The Jekyll tag `{% highlight %}` is not compatible with this theme.
-{: .prompt-danger }
-
-#### Line Number
-
-By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of a code block, add the class `nolineno` to it:
-
-````markdown
-```shell
-echo 'No more line numbers!'
-```
-{: .nolineno }
-````
-
-#### Specifying the Filename
-
-You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
-
-````markdown
-```shell
-# content
-```
-{: file="path/to/file" }
-````
-
-#### Liquid Codes
-
-If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}` and `{% endraw %}`:
-
-````markdown
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
-```
-{% endraw %}
-````
-
-Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
-
-## Mathematics
-
-We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
-
-[mathjax]: https://www.mathjax.org/
-
-```yaml
----
-math: true
----
-```
-
-After enabling the mathematical feature, you can add math equations with the following syntax:
-
-- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
-  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
-  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
-- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
-- **Inline math** (in lists) should be added with `\$$ math $$`
-
-```markdown
-<!-- Block math, keep all blank lines -->
-
-$$
-LaTeX_math_expression
-$$
-
-<!-- Equation numbering, keep all blank lines  -->
-
-$$
-\begin{equation}
-  LaTeX_math_expression
-  \label{eq:label_name}
-\end{equation}
-$$
-
-Can be referenced as \eqref{eq:label_name}.
-
-<!-- Inline math in lines, NO blank lines -->
-
-"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
-
-<!-- Inline math in lists, escape the first `$` -->
-
-1. \$$ LaTeX_math_expression $$
-2. \$$ LaTeX_math_expression $$
-3. \$$ LaTeX_math_expression $$
-```
-
-> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
-> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
-{: .prompt-tip }
-
-[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
-
-## Mermaid
-
-[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
-
-```yaml
----
-mermaid: true
----
-```
-
-Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
-
-## Learn More
-
-For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
+| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=
