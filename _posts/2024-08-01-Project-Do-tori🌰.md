@@ -9,7 +9,7 @@ pin: true
 math: true
 mermaid: true
 image:
-  path: assets/img/do-tori-banner.png
+  path: /assets/img/do-tori-banner.png
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
