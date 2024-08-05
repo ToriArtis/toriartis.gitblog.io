@@ -9,7 +9,7 @@ pin: true
 math: true
 mermaid: true
 image:
-  path: /assets/img/do-tori-banner.png
+  path: https://github.com/ToriArtis/toriartis.gitblog.io/blob/6d330b61fa2955f935568716c4d9da71bdec8088/assets/img/do-tori-banner.png
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
@@ -23,14 +23,13 @@ Do-Tori는 사용자들이 자신의 할 일 목록을 공유하고, 질문과 �
 
 **기획의도**: 사용자가 자신의 할 일을 공유하며 함께한다는 가치에서 오는 생산성 향상에 기반하여, todo와 community 기능을 결합하게 되었습니다. 커뮤니티에서 소외감을 느끼지 않도록 AI 답변 기능을 추가하여 질문에 대한 즉각적인 답변을 받을 수 있게 했습니다.
 
-<img src="./google_form.png" width="700">
-
+<img src="https://github.com/ToriArtis/Do-Tori/blob/60c51eb733032a523ee6d16640637db9c9c5b833/google_form.png" width="700">
 
 ### 🔎 Team Member
 
 | 김신이(PL) | 이소현 | 조민준 | 채현영 |
 | --- | --- | --- | --- |
-| ![image](https://github.com/ToriArtis/2NY-Backend/blob/fc7b7c165eb1f67eb27e697b867ffe736259b969/src/main/resources/static/images/SINI.png) | ![image](https://github.com/ToriArtis/2NY-Backend/blob/fc7b7c165eb1f67eb27e697b867ffe736259b969/src/main/resources/static/images/SOHYUN.png) | ![image](https://github.com/ToriArtis/2NY-Backend/blob/fc7b7c165eb1f67eb27e697b867ffe736259b969/src/main/resources/static/images/MINJUNE.png) | ![image](https://github.com/ToriArtis/2NY-Backend/blob/fc7b7c165eb1f67eb27e697b867ffe736259b969/src/main/resources/static/images/HYEONYEONG.png) |
+| ![image](https://github.com/ToriArtis/Do-Tori/blob/486d5ae3cd4507b4331bf0c117dca035facf4430/SINI.png) | ![image](https://github.com/ToriArtis/Do-Tori/blob/486d5ae3cd4507b4331bf0c117dca035facf4430/SOHYUN.png) | ![image](https://github.com/ToriArtis/Do-Tori/blob/486d5ae3cd4507b4331bf0c117dca035facf4430/MINJUNE.png) | ![image](https://github.com/ToriArtis/Do-Tori/blob/486d5ae3cd4507b4331bf0c117dca035facf4430/HYEONYEONG.png) |
 | [@SiNiKin](https://github.com/SiNiKin) | [@LeeSoHyunn](https://github.com/LeeSoHyunn) | [@Rencal3491](https://github.com/Rencal3491) | [@CheHyeonYeong](https://github.com/CheHyeonYeong)  |
 
 ### 프로젝트 개요
@@ -66,7 +65,7 @@ Do-Tori는 사용자들이 자신의 할 일 목록을 공유하고, 질문과 �
 
 ### 활용 장비 및 재료
 
-<img src="./tool.png" width="700">
+<img src="https://github.com/ToriArtis/Do-Tori/blob/96c5d16ebad5eb9a3fdd612546808b1bf086b182/tool.png" width="700">
 
 - PostMan
 - IntelliJ
@@ -79,9 +78,6 @@ Do-Tori는 사용자들이 자신의 할 일 목록을 공유하고, 질문과 �
 ### 프로젝트 구조
 
 #### ERD 및 아키텍처
-
-<img src="./Architecture.png" width="700">
-<img src="./erd.png" width="700">
 
 ### 기대 효과
 
